@@ -1,9 +1,10 @@
 class Pokemon {
-  constructor(name, type, level, hp, dmg) {
+  constructor(name, type, level, maxHp, dmg) {
     this.name = name;
     this.type = type;
     this.level = level;
-    this.hp = hp;
+    this.maxHp = maxHp;
+    this.hp = this.maxHp;
     this.dmg = dmg;
     this.def = 0;
   }
@@ -55,5 +56,9 @@ class Pokemon {
     console.log(
       `${this.name} uses 💪🔼POWER UP and increase its 💥DAMAGE ${this.dmg} (+16)`
     );
+  }
+
+  levelUp() {
+    this.level += 1;
   }
 }

@@ -2,6 +2,8 @@ class Trainer {
   constructor(name) {
     this.name = name;
     this.pokemonList = [];
+    this.roundRobinScore = 0;
+    this.level = 0;
   }
 
   addPokemon(pokemon) {
@@ -36,8 +38,47 @@ class Trainer {
       console.log(
         `Name: ${this.pokemonList[i].name} Type: %c${this.pokemonList[i].type}`,
         design,
-        `LVL: ${this.pokemonList[i].level}, HP: ${this.pokemonList[i].hp}, DMG: ${this.pokemonList[i].dmg}`
+        `LVL: ${this.pokemonList[i].level}`
       );
     }
+  }
+
+  revivePokemons() {
+    this.pokemonList.forEach(function (pokemon) {
+      //could be able to revive fainted pokemons
+      pokemon.hp = pokemon.maxHp;
+    });
+
+    console.log(`${this.name} 💓REVIVES his pokemons.`);
+  }
+
+  displayInfo() {
+    console.log(`Trainer: ${this.name}\nLvl: ${this.level}\nPokemons:`);
+  }
+
+  displayPokemon() {
+    let introduction;
+
+    this.pokemonList.map(function (pokemon) {
+      let design;
+      switch (pokemon.type) {
+        case "Fire":
+          design = `color: #fff; background: #FFA500; padding: .3rem; margin: .2rem .3rem; border-radius: .4rem;`;
+          break;
+        case "Water":
+          design = `color: #fff; background: #0000FF; padding: .3rem; margin: .2rem .3rem; border-radius: .4rem;`;
+          break;
+        case "Rock":
+          design = `color: #fff; background: #ae8b0c; padding: .3rem; margin: .2rem .3rem; border-radius: .4rem;`;
+          break;
+        case "Electric":
+          design = `color: #000; background: #ffff00; padding: .3rem; margin: .2rem .3rem; border-radius: .4rem;`;
+          break;
+        default:
+          design = `color: #fff; background: #808080; padding: .3rem; margin: .2rem .3rem; border-radius: .4rem;`;
+          break;
+      }
+      console.log(`%cLvl: ${pokemon.level} ${pokemon.name}`, design);
+    });
   }
 }
