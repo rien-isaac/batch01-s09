@@ -1,7 +1,7 @@
-class FirePokemon extends Pokemon {
+class NormalPokemon extends Pokemon {
   constructor(name, level, maxHp, dmg) {
     //calling the base constructor
-    super(name, "Fire", level, maxHp, dmg);
+    super(name, "Normal", level, maxHp, dmg);
   }
   //polymorphism; override attack() method for fire pokemon
   attack(opponent) {
@@ -9,14 +9,14 @@ class FirePokemon extends Pokemon {
 
     if (multiplier % 2 == 0) {
       console.log(
-        `${this.name} uses 🔥Flamethrower on ${
+        `${this.name} uses Tackle on ${
           opponent.name
         } and deals ${this.calculateDamage()} DAMAGE.`
       );
       opponent.receivedDamage(opponent);
     } else {
       console.log(
-        `💘CRITICAL HIT: ${this.name} uses 🔥Flamethrower on ${
+        `💘CRITICAL HIT: ${this.name} uses Tackle on ${
           opponent.name
         } and deals ${this.calculateDamage() * multiplier} DAMAGE.`
       );

@@ -20,7 +20,7 @@ class Pokemon {
       opponent.receivedDamage(opponent);
     } else {
       console.log(
-        ` 💘CRITICAL HIT: ${this.name} attack ${opponent.name} and deals a ${
+        `💘CRITICAL HIT: ${this.name} attack ${opponent.name} and deals a ${
           this.calculateDamage() * multiplier
         } DAMAGE.`
       );

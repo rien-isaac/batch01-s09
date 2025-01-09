@@ -1,7 +1,7 @@
 class WaterPokemon extends Pokemon {
-  constructor(name, level, hp, dmg) {
+  constructor(name, level, maxHp, dmg) {
     //calling the base constructor
-    super(name, "Water", level, hp, dmg);
+    super(name, "Water", level, maxHp, dmg);
   }
   //polymorphism; override attack() method for fire pokemon
   attack(opponent) {
@@ -16,9 +16,9 @@ class WaterPokemon extends Pokemon {
       opponent.receivedDamage(opponent);
     } else {
       console.log(
-        `${this.name} uses 💦Hydro Pump on ${opponent.name} and deals ${
-          this.calculateDamage() * multiplier
-        } DAMAGE.`
+        `💘CRITICAL HIT: ${this.name} uses 💦Hydro Pump on ${
+          opponent.name
+        } and deals ${this.calculateDamage() * multiplier} DAMAGE.`
       );
       opponent.receivedDamage(opponent);
     }

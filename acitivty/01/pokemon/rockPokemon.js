@@ -1,7 +1,7 @@
 class RockPokemon extends Pokemon {
-  constructor(name, level, hp, dmg) {
+  constructor(name, level, maxHp, dmg) {
     //calling the base constructor
-    super(name, "Rock", level, hp, dmg);
+    super(name, "Rock", level, maxHp, dmg);
   }
   //polymorphism; override attack() method for fire pokemon
   attack(opponent) {
@@ -16,9 +16,9 @@ class RockPokemon extends Pokemon {
       opponent.receivedDamage(opponent);
     } else {
       console.log(
-        `${this.name} uses Earthquake on ${opponent.name} and deals ${
-          this.calculateDamage() * multiplier
-        } DAMAGE.`
+        `💘CRITICAL HIT: ${this.name} uses Earthquake on ${
+          opponent.name
+        } and deals ${this.calculateDamage() * multiplier} DAMAGE.`
       );
       opponent.receivedDamage(opponent);
     }

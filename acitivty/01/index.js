@@ -1,68 +1,76 @@
 //spawning pokemons for trainers
-let rayquaza = new Pokemon("Rayquaza", "Legendary", 100, 100, 100);
-let groudon = new Pokemon("Groudon", "Legendary", 100, 100, 100);
-let kyogre = new Pokemon("Kyogre", "Legendary", 100, 100, 100);
-let arceus = new Pokemon("Arceus", "Legendary", 100, 100, 100);
-let deoxys = new Pokemon("Deoxys", "Legendary", 100, 100, 100);
-let godzilla = new Pokemon("Godzilla", "Plasma", 13, 13, 3);
-let pikachu = new ElectricPokemon("Pikachu", 12, 12, 5);
-let charmander = new FirePokemon("Charmander", 15, 15, 7);
-let torchick = new FirePokemon("Torchick", 17, 17, 4);
-let mudkip = new WaterPokemon("Mudkip", 10, 10, 6);
-let geodude = new RockPokemon("Geodude", 17, 17, 8);
-let electrobuzz = new ElectricPokemon("Electrobuzz", 18, 18, 3);
-let flygon = new Pokemon("Flygon", "Dragon", 11, 11, 5);
-let onyx = new RockPokemon("Onyx", 14, 14, 7);
-let gabite = new Pokemon("Gabite", "Dragon", 15, 15, 2);
-let absol = new Pokemon("Absol", "Bug", 3, 8, 4);
-let lotad = new WaterPokemon("Lotad", 5, 19, 6);
-let wingul = new WaterPokemon("Wingul", 12, 18, 11);
-let ralts = new Pokemon("Ralts", "Normal", 5, 7, 9);
-let ratata = new Pokemon("Ratata", "Normal", 6, 3, 9);
-let numel = new Pokemon("Numel", "Normal", 8, 9, 10);
-let oddish = new Pokemon("Oddish", "Grass", 6, 7, 8);
-let psyduck = new WaterPokemon("Psyduck", 12, 15, 16);
-let spoink = new Pokemon("Spoink", "Normal", 12, 15, 18);
-let vulpix = new FirePokemon("Vulpix", 16, 18, 20);
+let rattata = new NormalPokemon("Rattata", 1, 20, 5);
+let sentret = new NormalPokemon("Sentret", 1, 20, 5);
+let pidgey = new NormalPokemon("Pidgey", 1, 20, 5);
+let hoothoot = new NormalPokemon("Hoothoot", 1, 20, 5);
+let bidoof = new NormalPokemon("Bidoof", 1, 20, 5);
+let pichu = new ElectricPokemon("Pichu", 1, 20, 5);
+let magnemite = new ElectricPokemon("Magnemite", 1, 20, 5);
+let elekid = new ElectricPokemon("Elekid", 1, 20, 5);
+let plusle = new ElectricPokemon("Plusle", 1, 20, 5);
+let minun = new ElectricPokemon("Minun", 1, 20, 5);
+let chimchar = new FirePokemon("Chimchar", 1, 20, 5);
+let torchik = new FirePokemon("Torchik", 1, 20, 5);
+let cyndaquill = new FirePokemon("Cyndaquill", 1, 20, 5);
+let vulpix = new FirePokemon("Vulpix", 1, 20, 5);
+let growlithe = new FirePokemon("Growlithe", 1, 20, 5);
+let squirtle = new WaterPokemon("Squirtle", 1, 20, 5);
+let totodile = new WaterPokemon("Totodile", 1, 20, 5);
+let mudkip = new WaterPokemon("Mudkip", 1, 20, 5);
+let chikorita = new WaterPokemon("Chikorita", 1, 20, 5);
+let piplup = new WaterPokemon("Piplup", 1, 20, 5);
+let geodude = new RockPokemon("Geodude", 1, 20, 5);
+let onix = new RockPokemon("Onix", 1, 20, 5);
+let roggenrola = new RockPokemon("Roggenrola", 1, 20, 5);
+let tirtouga = new RockPokemon("Tirtouga", 1, 20, 5);
+let shuckle = new RockPokemon("Shuckle", 1, 20, 5);
+
+let poolOfPokemons = [
+  rattata,
+  sentret,
+  pidgey,
+  hoothoot,
+  bidoof,
+  pichu,
+  magnemite,
+  elekid,
+  plusle,
+  minun,
+  chimchar,
+  torchik,
+  cyndaquill,
+  vulpix,
+  growlithe,
+  squirtle,
+  totodile,
+  mudkip,
+  chikorita,
+  piplup,
+  geodude,
+  onix,
+  roggenrola,
+  tirtouga,
+  shuckle,
+];
+
+// console.log(poolOfPokemons); // for checking pool of pokemons
 
 //adding pokemons to their respective trainers
 let jonas = new Trainer("Jonas");
-jonas.addPokemon(rayquaza);
-jonas.addPokemon(groudon);
-jonas.addPokemon(kyogre);
-jonas.addPokemon(arceus);
-jonas.addPokemon(deoxys);
-
+let jessy = new Trainer("Jessy");
+let james = new Trainer("James");
 let ash = new Trainer("Ash");
-ash.addPokemon(godzilla);
-ash.addPokemon(pikachu);
-ash.addPokemon(charmander);
-ash.addPokemon(torchick);
-ash.addPokemon(mudkip);
-
 let red = new Trainer("Red");
-red.addPokemon(geodude);
-red.addPokemon(electrobuzz);
-red.addPokemon(flygon);
-red.addPokemon(onyx);
-red.addPokemon(gabite);
-
 let blue = new Trainer("Blue");
-blue.addPokemon(ratata);
-blue.addPokemon(ralts);
-blue.addPokemon(wingul);
-blue.addPokemon(lotad);
-blue.addPokemon(absol);
-
 let wabapet = new Trainer("Wabapet");
-wabapet.addPokemon(spoink);
-wabapet.addPokemon(vulpix);
-wabapet.addPokemon(psyduck);
-wabapet.addPokemon(oddish);
-wabapet.addPokemon(numel);
+
+//create pool of trainers
+let poolOfTrainers = [jonas, jessy, james, ash, red, blue, wabapet];
+
+// console.log(poolOfTrainers); //for checking pool of trainers
 
 //array for trainers
-let contestants; //for bracket matching battles
+let contestants = []; //for bracket matching battles
 let top3Trainers = []; // for round robin matching battles
 
 //start or nah
@@ -71,14 +79,6 @@ let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
 if (willPlay.toLowerCase() == "n") {
   console.log("Edi Don't");
 } else if (willPlay.toLowerCase() == "y") {
-  //create pool of trainers
-  let poolOfTrainers = [];
-  poolOfTrainers.push(jonas);
-  poolOfTrainers.push(ash);
-  poolOfTrainers.push(red);
-  poolOfTrainers.push(blue);
-  poolOfTrainers.push(wabapet);
-
   //how many trainer
   let numberOfTrainers = prompt("How many trainer? ");
   if (parseInt(numberOfTrainers) != 5) {
@@ -89,8 +89,8 @@ if (willPlay.toLowerCase() == "n") {
     contestants = poolOfTrainers.slice(startIndex);
 
     //for viewing only
-    console.log(startIndex);
-    console.log(contestants);
+    // console.log(startIndex);
+    // console.log(contestants);
 
     //how many pokemon
     let numberOfPokemon = prompt(
@@ -108,6 +108,11 @@ if (willPlay.toLowerCase() == "n") {
 
 function bracketMatching() {
   //for 5 constestants
+
+  console.log("+==========+");
+  console.log("Bracket Matching");
+  console.log("+==========+");
+
   let game1 = new Tournament(contestants[0], contestants[1]);
   game1.battle();
 
