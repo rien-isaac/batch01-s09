@@ -60,5 +60,6 @@ class Pokemon {
 
   levelUp() {
     this.level += 1;
+    console.log(`${this.name} ⬆LEVEL UP.`);
   }
 }

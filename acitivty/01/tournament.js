@@ -67,6 +67,8 @@ class Tournament {
               //end for healing
 
               if (this.trainer1.pokemonList[selector1].hp <= 0) {
+                this.trainer2.pokemonList[selector2].levelUp();
+
                 console.log(`********`);
                 console.log(
                   `%c${this.trainer2.name}`,
@@ -77,6 +79,7 @@ class Tournament {
                 //set team 2 as the winner...
                 break;
               } else {
+                this.trainer1.pokemonList[selector1].levelUp();
                 console.log(`********`);
                 console.log(
                   `%c${this.trainer1.name}`,

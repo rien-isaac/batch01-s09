@@ -69,7 +69,7 @@ let poolOfTrainers = [jonas, jessy, james, ash, red, blue, wabapet];
 
 // console.log(poolOfTrainers); //for checking pool of trainers
 
-poolOfPokemons.some(() => Math.random() - 0.7); //shuffle pokemons
+poolOfPokemons.sort(() => Math.random() - 0.7); //shuffle pokemons
 poolOfTrainers.sort(() => Math.random() - 0.5); //shuffle trainers
 
 //array for trainers
@@ -95,13 +95,13 @@ function bracketMatching4Trainers() {
   game2.battle();
 
   let game3 = new Tournament(game1.winner, game2.winner);
-  game4.battle();
+  game3.battle();
 
   let game4 = new Tournament(game1.loser, game2.loser);
-  game5.battle();
+  game4.battle();
 
   let game5 = new Tournament(game4.winner, game3.loser);
-  game6.battle();
+  game5.battle();
 
   //setting top 3 trainers
   top3Trainers.push(game4.winner, game5.winner, game5.loser);
@@ -163,30 +163,32 @@ let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
 if (willPlay.toLowerCase() == "n") {
   console.log("Edi Don't");
 } else if (willPlay.toLowerCase() == "y") {
-  //how many trainer
+  //Prompt how many trainer?
   let numberOfTrainers = prompt("How many trainer? ");
   if (parseInt(numberOfTrainers) < 3 && parseInt(numberOfTrainers > 5)) {
     alert("Invalid Input");
     location.reload();
   } else {
-    // contestants = poolOfTrainers.slice(startIndex);
-
-    for (i = 0; i < parseInt(numberOfTrainers); i++) {
+    //add trainers as contestants
+    for (let i = 0; i < parseInt(numberOfTrainers); i++) {
       contestants.push(poolOfTrainers[i]);
     }
 
-    //for viewing only
-    // console.log(startIndex);
-    // console.log(contestants);
-
-    //how many pokemon
+    //Prompt how many pokemon?
     let numberOfPokemon = prompt(
       "How many pokemons each trainer is required? "
     );
-    if (parseInt(numberOfPokemon) != 5) {
+    if (parseInt(numberOfPokemon) < 0 && parseInt(numberOfPokemon) > 5) {
       alert("Invalid Input");
       location.reload();
     } else {
+      //add pokemon to each trainers
+      for (let i = 0; i < parseInt(numberOfTrainers); i++) {
+        for (let j = 0; j < parseInt(numberOfPokemon); j++) {
+          contestants[i].addPokemon(poolOfPokemons[j]);
+        }
+      }
+
       switch (parseInt(numberOfTrainers)) {
         case 3:
           console.log(contestants); //for viewing purposes only
