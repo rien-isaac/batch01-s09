@@ -37,7 +37,6 @@ class Pokemon {
     this.hp -= opponent.dmg - this.def;
     if (this.hp <= 0) {
       console.log(`💀${this.name} has fainted.`);
-      //   console.log(`${opponent.name} level up ${opponent.level + 1}`);
     } else {
       console.log(`${this.name} has ${this.hp} HP left.`);
     }
