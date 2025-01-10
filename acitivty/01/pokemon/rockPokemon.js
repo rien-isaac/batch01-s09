@@ -9,16 +9,12 @@ class RockPokemon extends Pokemon {
 
     if (multiplier % 2 == 0) {
       console.log(
-        `${this.name} uses Earthquake on ${
-          opponent.name
-        } and deals ${this.calculateDamage()} DAMAGE.`
+        `${this.name} uses Earthquake on ${opponent.name} and deals ${this.dmg} DAMAGE.`
       );
       opponent.receivedDamage(opponent);
     } else {
       console.log(
-        `💘CRITICAL HIT: ${this.name} uses Earthquake on ${
-          opponent.name
-        } and deals ${this.calculateDamage() * multiplier} DAMAGE.`
+        `💘CRITICAL HIT: ${this.name} uses Earthquake on ${opponent.name} and deals ${this.dmg} DAMAGE.`
       );
       opponent.receivedDamage(opponent);
     }

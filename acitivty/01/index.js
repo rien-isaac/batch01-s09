@@ -76,6 +76,8 @@ poolOfTrainers.sort(() => Math.random() - 0.5); //shuffle trainers
 let contestants = []; //for bracket matching battles
 let top3Trainers = []; // for round robin matching battles
 
+let champion;
+
 function bracketMatching3Trainers() {
   top3Trainers.push(contestants[0], contestants[1], contestants[2]);
   roundRobinMatching();
@@ -123,7 +125,7 @@ function bracketMatching5Trainers() {
   let game3 = new Tournament(game1.winner, contestants[4]);
   game3.battle();
 
-  let game4 = new Tournament(game1.loser, game2.loser);
+  let game4 = new Tournament(game1.winner, game2.loser);
   game4.battle();
 
   let game5 = new Tournament(game2.winner, game3.winner);
@@ -135,6 +137,15 @@ function bracketMatching5Trainers() {
   //set the top 3 into a new array
   top3Trainers.push(game5.winner, game6.winner, game6.loser);
 }
+
+// function willContinue() {
+//   let ans = prompt("Game Master, will you continue the championship? y/n");
+//   if (ans.toLowerCase() == "n") {
+//     console.log("Edi Don't");
+//   } else if (ans.toLowerCase() == "y") {
+//     alert("The CHAMPIONSHIP will be continued.");
+//   }
+// }
 
 function roundRobinMatching() {
   console.log("+==========+");
@@ -153,6 +164,16 @@ function roundRobinMatching() {
 
   roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
   roundRobinGame3.battle();
+
+  champion = top3Trainers.filter(function (trainer) {
+    if (trainer.roundRobinScore == 2) {
+      return trainer.roundRobinScore == 2;
+    }
+  });
+
+  console.log(`+==========+`);
+  console.log(`And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`);
+  console.log(`+==========+`);
 }
 
 //start here
@@ -204,6 +225,20 @@ if (willPlay.toLowerCase() == "n") {
         case 5:
           console.log(contestants); //for viewing purposes only
           bracketMatching5Trainers();
+          let ans = prompt(
+            "Game Master, will you continue the championship? y/n"
+          );
+          if (ans.toLowerCase() == "n") {
+            console.log("Edi Don't");
+          } else if (ans.toLowerCase() == "y") {
+            alert("The CHAMPIONSHIP will be continued.");
+          } else {
+            console.log("Edi Don't");
+            alert(
+              "The Chamiopship has been halt cause of technical problems. Sorry."
+            );
+          }
+
           roundRobinMatching();
           break;
       }

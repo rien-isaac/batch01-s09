@@ -3,7 +3,7 @@ class Trainer {
     this.name = name;
     this.pokemonList = [];
     this.roundRobinScore = 0;
-    this.level = 0;
+    this.level = 1;
   }
 
   addPokemon(pokemon) {
