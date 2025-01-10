@@ -69,44 +69,45 @@ let poolOfTrainers = [jonas, jessy, james, ash, red, blue, wabapet];
 
 // console.log(poolOfTrainers); //for checking pool of trainers
 
+poolOfPokemons.some(() => Math.random() - 0.7); //shuffle pokemons
+poolOfTrainers.sort(() => Math.random() - 0.5); //shuffle trainers
+
 //array for trainers
 let contestants = []; //for bracket matching battles
 let top3Trainers = []; // for round robin matching battles
 
-//start or nah
-let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
-
-if (willPlay.toLowerCase() == "n") {
-  console.log("Edi Don't");
-} else if (willPlay.toLowerCase() == "y") {
-  //how many trainer
-  let numberOfTrainers = prompt("How many trainer? ");
-  if (parseInt(numberOfTrainers) != 5) {
-    alert("Invalid Input");
-    location.reload();
-  } else {
-    let startIndex = poolOfTrainers.length - parseInt(numberOfTrainers);
-    contestants = poolOfTrainers.slice(startIndex);
-
-    //for viewing only
-    // console.log(startIndex);
-    // console.log(contestants);
-
-    //how many pokemon
-    let numberOfPokemon = prompt(
-      "How many pokemons each trainer is required? "
-    );
-    if (parseInt(numberOfPokemon) != 5) {
-      alert("Invalid Input");
-      location.reload();
-    } else {
-      bracketMatching();
-      roundRobinMatching();
-    }
-  }
+function bracketMatching3Trainers() {
+  top3Trainers.push(contestants[0], contestants[1], contestants[2]);
+  roundRobinMatching();
 }
 
-function bracketMatching() {
+function bracketMatching4Trainers() {
+  //for 4 contestants
+
+  console.log("+==========+");
+  console.log("Bracket Matching");
+  console.log("+==========+");
+
+  let game1 = new Tournament(contestants[0], contestants[1]);
+  game1.battle();
+
+  let game2 = new Tournament(contestants[2], contestants[3]);
+  game2.battle();
+
+  let game3 = new Tournament(game1.winner, game2.winner);
+  game4.battle();
+
+  let game4 = new Tournament(game1.loser, game2.loser);
+  game5.battle();
+
+  let game5 = new Tournament(game4.winner, game3.loser);
+  game6.battle();
+
+  //setting top 3 trainers
+  top3Trainers.push(game4.winner, game5.winner, game5.loser);
+}
+
+function bracketMatching5Trainers() {
   //for 5 constestants
 
   console.log("+==========+");
@@ -152,4 +153,56 @@ function roundRobinMatching() {
 
   roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
   roundRobinGame3.battle();
+}
+
+//start here
+
+//start or nah
+let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
+
+if (willPlay.toLowerCase() == "n") {
+  console.log("Edi Don't");
+} else if (willPlay.toLowerCase() == "y") {
+  //how many trainer
+  let numberOfTrainers = prompt("How many trainer? ");
+  if (parseInt(numberOfTrainers) < 3 && parseInt(numberOfTrainers > 5)) {
+    alert("Invalid Input");
+    location.reload();
+  } else {
+    // contestants = poolOfTrainers.slice(startIndex);
+
+    for (i = 0; i < parseInt(numberOfTrainers); i++) {
+      contestants.push(poolOfTrainers[i]);
+    }
+
+    //for viewing only
+    // console.log(startIndex);
+    // console.log(contestants);
+
+    //how many pokemon
+    let numberOfPokemon = prompt(
+      "How many pokemons each trainer is required? "
+    );
+    if (parseInt(numberOfPokemon) != 5) {
+      alert("Invalid Input");
+      location.reload();
+    } else {
+      switch (parseInt(numberOfTrainers)) {
+        case 3:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching3Trainers();
+          break;
+        case 4:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching4Trainers();
+          roundRobinMatching();
+          break;
+        case 5:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching5Trainers();
+          roundRobinMatching();
+          break;
+      }
+    }
+  }
 }
