@@ -67,6 +67,7 @@ class RoundRobin extends Tournament {
                   `color: #0000ff`,
                   `'s${this.trainer2.pokemonList[selector2].name} has won the battle.`
                 );
+                this.trainer2.pokemonList[selector2].levelUp();
                 console.log(`********`);
                 //set team 2 as the winner...
                 break;
@@ -77,6 +78,7 @@ class RoundRobin extends Tournament {
                   `color: #ee4b2b`,
                   `'s ${this.trainer1.pokemonList[selector1].name} has won the battle.`
                 );
+                this.trainer1.pokemonList[selector1].levelUp();
 
                 console.log(`********`);
                 break;
@@ -108,6 +110,7 @@ class RoundRobin extends Tournament {
       this.loser = this.trainer2;
       // console.log(this.trainer1);
       console.log(`%c${this.trainer1.name} is the winner.`, `color: #00ff00`);
+      this.winner.levelUp();
       console.log(`********`);
     } else {
       this.winner = this.trainer2;
@@ -115,6 +118,7 @@ class RoundRobin extends Tournament {
       this.loser = this.trainer1;
       // console.log(this.trainer2);
       console.log(`%c${this.trainer2.name} is the winner.`, `color: #0000ff`);
+      this.winner.levelUp();
       console.log(`********`);
     }
   }
