@@ -138,15 +138,6 @@ function bracketMatching5Trainers() {
   top3Trainers.push(game5.winner, game6.winner, game6.loser);
 }
 
-// function willContinue() {
-//   let ans = prompt("Game Master, will you continue the championship? y/n");
-//   if (ans.toLowerCase() == "n") {
-//     console.log("Edi Don't");
-//   } else if (ans.toLowerCase() == "y") {
-//     alert("The CHAMPIONSHIP will be continued.");
-//   }
-// }
-
 function roundRobinMatching() {
   console.log("+==========+");
   console.log("Round Robin");
@@ -164,16 +155,6 @@ function roundRobinMatching() {
 
   roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
   roundRobinGame3.battle();
-
-  champion = top3Trainers.filter(function (trainer) {
-    if (trainer.roundRobinScore == 2) {
-      return trainer.roundRobinScore == 2;
-    }
-  });
-
-  console.log(`+==========+`);
-  console.log(`And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`);
-  console.log(`+==========+`);
 }
 
 //start here
@@ -212,6 +193,18 @@ if (willPlay.toLowerCase() == "n") {
         }
       }
 
+      function determineChampion() {
+        champion = top3Trainers.filter(function (trainer) {
+          return trainer.roundRobinScore == 2;
+        });
+
+        console.log(`+==========+`);
+        console.log(
+          `And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`
+        );
+        console.log(`+==========+`);
+      }
+
       switch (parseInt(numberOfTrainers)) {
         case 3:
           console.log(contestants); //for viewing purposes only
@@ -225,23 +218,12 @@ if (willPlay.toLowerCase() == "n") {
         case 5:
           console.log(contestants); //for viewing purposes only
           bracketMatching5Trainers();
-          let ans = prompt(
-            "Game Master, will you continue the championship? y/n"
-          );
-          if (ans.toLowerCase() == "n") {
-            console.log("Edi Don't");
-          } else if (ans.toLowerCase() == "y") {
-            alert("The CHAMPIONSHIP will be continued.");
-          } else {
-            console.log("Edi Don't");
-            alert(
-              "The Chamiopship has been halt cause of technical problems. Sorry."
-            );
-          }
-
           roundRobinMatching();
           break;
       }
+
+      // determineChampion();
+      // console.log(champion);
     }
   }
 }
