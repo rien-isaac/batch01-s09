@@ -26,6 +26,10 @@ class WaterPokemon extends Pokemon {
 
   heal() {
     this.hp += 16;
+    //ensures that the hp will not exceed the max hp
+    if (this.hp > this.maxHp) {
+      this.hp = this.maxHp;
+    }
     console.log(
       `${this.name} 💖REGAINED 10 HP with the 💧BLESSING OF WATER! Current HP: ${this.hp}`
     );

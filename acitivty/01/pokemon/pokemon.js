@@ -45,6 +45,9 @@ class Pokemon {
 
   heal() {
     this.hp += 10;
+    if (this.hp > this.maxHp) {
+      this.hp = this.maxHp;
+    }
     this.def += 10;
     console.log(
       `${this.name} use 💖HEAL and gained 10 hp. ${this.name}'s Current HP: ${this.hp} and gain temporary 🛡🔼DEFENSE BOOST.`

@@ -44,12 +44,19 @@ class Trainer {
   }
 
   revivePokemons() {
-    this.pokemonList.forEach(function (pokemon) {
-      //could be able to revive fainted pokemons
-      pokemon.hp = pokemon.maxHp;
-    });
+    if (this.level > 3) {
+      this.pokemonList.forEach(function (pokemon) {
+        //could be able to revive fainted pokemons
+        pokemon.hp = pokemon.maxHp;
+      });
 
-    console.log(`${this.name} 💓REVIVES his pokemons.`);
+      console.log(`${this.name} 💓REVIVES his pokemons.`);
+    }
+  }
+
+  levelUp() {
+    this.level++;
+    console.log(`${this.name} ⬆LEVEL UP`);
   }
 
   displayInfo() {

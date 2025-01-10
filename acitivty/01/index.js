@@ -183,9 +183,11 @@ if (willPlay.toLowerCase() == "n") {
       location.reload();
     } else {
       //add pokemon to each trainers
+      let pokemonIndex = 0;
       for (let i = 0; i < parseInt(numberOfTrainers); i++) {
-        for (let j = 0; j < parseInt(numberOfPokemon); j++) {
-          contestants[i].addPokemon(poolOfPokemons[j]);
+        while (contestants[i].pokemonList.length < parseInt(numberOfPokemon)) {
+          contestants[i].addPokemon(poolOfPokemons[pokemonIndex]);
+          pokemonIndex++;
         }
       }
 

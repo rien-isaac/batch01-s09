@@ -67,25 +67,26 @@ class Tournament {
               //end for healing
 
               if (this.trainer1.pokemonList[selector1].hp <= 0) {
-                this.trainer2.pokemonList[selector2].levelUp();
-
                 console.log(`********`);
                 console.log(
                   `%c${this.trainer2.name}`,
                   `color: #0000ff`,
                   `'s${this.trainer2.pokemonList[selector2].name} has won the battle.`
                 );
+
+                this.trainer2.pokemonList[selector2].levelUp();
                 console.log(`********`);
                 //set team 2 as the winner...
                 break;
               } else {
-                this.trainer1.pokemonList[selector1].levelUp();
                 console.log(`********`);
                 console.log(
                   `%c${this.trainer1.name}`,
                   `color: #ee4b2b`,
                   `'s ${this.trainer1.pokemonList[selector1].name} has won the battle.`
                 );
+
+                this.trainer1.pokemonList[selector1].levelUp();
 
                 console.log(`********`);
                 break;
@@ -96,6 +97,7 @@ class Tournament {
         }
       }
     }
+
     let teamOneTotalHp = 0;
     let teamTwoTotalHp = 0;
 
@@ -116,13 +118,28 @@ class Tournament {
       this.loser = this.trainer2;
       // console.log(this.trainer1);
       console.log(`%c${this.trainer1.name} is the winner.`, `color: #00ff00`);
+
+      this.winner.levelUp();
       console.log(`********`);
     } else {
       this.winner = this.trainer2;
       this.loser = this.trainer1;
       // console.log(this.trainer2);
       console.log(`%c${this.trainer2.name} is the winner.`, `color: #0000ff`);
+      this.winner.levelUp();
       console.log(`********`);
     }
+
+    // let userInput = prompt(
+    //   "Game Master, will you continue the tournament? y/n"
+    // );
+    // if (userInput.toLowerCase == "n") {
+    //   alert("Ongey! Edi don't");
+    //   location.reload();
+    // } else if (userInput.toLocaleLowerCase == "y") {
+    //   alert("The tournament will conintue.");
+    // } else {
+    //   alert("Invalid Input. Please 'y' for YES and 'n' for NO.");
+    // }
   }
 }
