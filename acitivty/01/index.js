@@ -155,9 +155,20 @@ function roundRobinMatching() {
 
   roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
   roundRobinGame3.battle();
+
+  top3Trainers.forEach(function (trainer) {
+    if (trainer.roundRobinScore == 2) {
+      console.log(trainer);
+      champion = trainer;
+    }
+  });
+
+  console.log(`The CHAMPION is LVL ${champion.level} ${champion.name} 🎉🎊🎈`);
 }
 
 //start here
+
+console.log("Hello Game Master");
 
 //start or nah
 let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
@@ -193,18 +204,6 @@ if (willPlay.toLowerCase() == "n") {
         }
       }
 
-      function determineChampion() {
-        champion = top3Trainers.filter(function (trainer) {
-          return trainer.roundRobinScore == 2;
-        });
-
-        console.log(`+==========+`);
-        console.log(
-          `And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`
-        );
-        console.log(`+==========+`);
-      }
-
       switch (parseInt(numberOfTrainers)) {
         case 3:
           console.log(contestants); //for viewing purposes only
@@ -222,8 +221,17 @@ if (willPlay.toLowerCase() == "n") {
           break;
       }
 
-      // determineChampion();
-      // console.log(champion);
+      //determine champion here
+      // top3Trainers.forEach(function (trainer) {
+      //   console.log(trainer);
+      //   if (trainer.roundRobinScore > 1) {
+      //     console.log(`Trainer ${trainer.name} has a score of 2`);
+      //   }
+      // });
+
+      // console.log(`+==========+`);
+      // console.log(`And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`);
+      // console.log(`+==========+`);
     }
   }
 }

@@ -10,7 +10,7 @@ class Pokemon {
     this.defBoostIsActive = false;
   }
   attack(opponent) {
-    // let multiplier = Math.floor(Math.random() * 11);
+    let multiplier = Math.floor(Math.random() * this.dmg);
     // let damage = this.calculateDamage();
 
     if (multiplier % 2 == 0) {

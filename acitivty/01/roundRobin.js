@@ -5,13 +5,16 @@ class RoundRobin extends Tournament {
   // overide battle function
   battle() {
     //revive pokemons if the trainer satisfied the level condition
-    console.log(`${this.trainer1.name}: LVL: ${this.trainer1.level}`);
+    console.log(
+      `Lvl ${this.trainer1.level}  ${this.trainer1.name}`,
+      ` VS `,
+      `Lvl ${this.trainer2.level}  ${this.trainer2.name}`
+    );
 
     let levelCondition = 2;
     if (this.trainer1.level >= levelCondition) {
       this.trainer1.revivePokemons();
     }
-    console.log(`${this.trainer2.name}: LVL: ${this.trainer2.level}`);
     if (this.trainer2.level >= levelCondition) {
       this.trainer2.revivePokemons();
     }
@@ -23,12 +26,11 @@ class RoundRobin extends Tournament {
     //pokemon selector trainer 1
     while (
       selector1 < this.trainer1.pokemonList.length &&
-      this.trainer1.pokemonList[selector1].hp > 0
+      this.trainer1.pokemonList[selector1].hp > 0 &&
+      this.trainer1.pokemonList[selector1].hp <=
+        this.trainer1.pokemonList[selector1].maxHp
     ) {
       if (this.trainer1.pokemonList[selector1].hp > 0) {
-        console.log(
-          `${this.trainer1.name} selects ${this.trainer1.pokemonList[selector1].name}`
-        );
         if (
           this.trainer1.pokemonList[selector1].hp >
           this.trainer1.pokemonList[selector1].maxHp
@@ -40,7 +42,9 @@ class RoundRobin extends Tournament {
         //pokemon selector trainer 2
         while (
           selector2 < this.trainer2.pokemonList.length &&
-          this.trainer2.pokemonList[selector2].hp > 0
+          this.trainer2.pokemonList[selector2].hp > 0 &&
+          this.trainer2.pokemonList[selector2].hp <=
+            this.trainer2.pokemonList[selector2].maxHp
         ) {
           if (this.trainer2.pokemonList[selector2].hp > 0) {
             console.log(
