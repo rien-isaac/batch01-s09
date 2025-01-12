@@ -158,7 +158,6 @@ function roundRobinMatching() {
 
   top3Trainers.forEach(function (trainer) {
     if (trainer.roundRobinScore == 2) {
-      console.log(trainer);
       champion = trainer;
     }
   });

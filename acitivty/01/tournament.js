@@ -7,19 +7,21 @@ class Tournament {
   }
 
   battle() {
-    //revive pokemons if the trainer satisfied the level condition
+    //displays who battles
     console.log(
-      `%c${this.trainer1.level} ${this.trainer1.name}`,
-      `color: #fff; background: #0000ff;`,
-      ` VS %c${this.trainer2.level} ${this.trainer2.name}`,
-      `color: #fff; backround: #ff0000`
+      `Lvl ${this.trainer1.level}  ${this.trainer1.name}`,
+      ` VS `,
+      `Lvl ${this.trainer2.level}  ${this.trainer2.name}`
     );
 
-    let levelCondition = 2;
+    //revive pokemons if the trainer satisfied the level condition
+    let levelCondition = 3;
+
+    //for trainer 1
     if (this.trainer1.level >= levelCondition) {
       this.trainer1.revivePokemons();
     }
-    console.log(`${this.trainer2.name}: LVL: ${this.trainer2.level}`);
+    //for trainer 2
     if (this.trainer2.level >= levelCondition) {
       this.trainer2.revivePokemons();
     }
@@ -31,12 +33,15 @@ class Tournament {
     //pokemon selector trainer 1
     while (
       selector1 < this.trainer1.pokemonList.length &&
-      this.trainer1.pokemonList[selector1].hp > 0
+      this.trainer1.pokemonList[selector1].hp > 0 &&
+      this.trainer1.pokemonList[selector1].hp <=
+        this.trainer1.pokemonList[selector1].maxHp
     ) {
       if (this.trainer1.pokemonList[selector1].hp > 0) {
         console.log(
           `${this.trainer1.name} selects ${this.trainer1.pokemonList[selector1].name}`
         );
+
         if (
           this.trainer1.pokemonList[selector1].hp >
           this.trainer1.pokemonList[selector1].maxHp
@@ -48,7 +53,9 @@ class Tournament {
         //pokemon selector trainer 2
         while (
           selector2 < this.trainer2.pokemonList.length &&
-          this.trainer2.pokemonList[selector2].hp > 0
+          this.trainer2.pokemonList[selector2].hp > 0 &&
+          this.trainer2.pokemonList[selector2].hp <=
+            this.trainer2.pokemonList[selector2].maxHp
         ) {
           if (this.trainer2.pokemonList[selector2].hp > 0) {
             console.log(
@@ -80,28 +87,6 @@ class Tournament {
 
               //did the attacked pokemon's hp satisfied the condition for healing?
               //start for healing
-              if (this.trainer1.pokemonList[selector1].hp > 0) {
-                if (
-                  this.trainer1.pokemonList[selector1].hp < 6 &&
-                  this.trainer1.pokemonList[selector1].hp > 2
-                ) {
-                  this.trainer1.pokemonList[selector1].heal();
-                  this.trainer1.pokemonList[selector1].defBoostIsActive = false;
-                }
-              } else {
-                console.log(`********`);
-                console.log(
-                  `%c${this.trainer2.name}`,
-                  `color: #ee4b2b`,
-                  `'s ${this.trainer2.pokemonList[selector2].name} has won the battle.`
-                );
-
-                this.trainer2.pokemonList[selector2].levelUp();
-
-                console.log(`********`);
-                selector2++; //select another pokemon for trainer 2
-                break;
-              }
 
               if (this.trainer2.pokemonList[selector2].hp > 0) {
                 if (
@@ -109,7 +94,6 @@ class Tournament {
                   this.trainer2.pokemonList[selector2].hp > 2
                 ) {
                   this.trainer2.pokemonList[selector2].heal();
-                  this.trainer2.pokemonList[selector2].defBoostIsActive = false;
                 }
               } else {
                 console.log(`********`);
@@ -165,6 +149,7 @@ class Tournament {
         `🎉🎊🥳`
       );
       console.log(`********`);
+
       this.winner.levelUp();
     } else {
       this.winner = this.trainer2;
@@ -178,6 +163,7 @@ class Tournament {
         `🎉🎊🥳`
       );
       console.log(`********`);
+
       this.winner.levelUp();
     }
   }

@@ -4,17 +4,21 @@ class RoundRobin extends Tournament {
   }
   // overide battle function
   battle() {
-    //revive pokemons if the trainer satisfied the level condition
+    //displays who battles
     console.log(
       `Lvl ${this.trainer1.level}  ${this.trainer1.name}`,
       ` VS `,
       `Lvl ${this.trainer2.level}  ${this.trainer2.name}`
     );
 
-    let levelCondition = 2;
+    //revive pokemons if the trainer satisfied the level condition
+    let levelCondition = 3;
+
+    //for trainer 1
     if (this.trainer1.level >= levelCondition) {
       this.trainer1.revivePokemons();
     }
+    //for trainer 2
     if (this.trainer2.level >= levelCondition) {
       this.trainer2.revivePokemons();
     }
@@ -31,6 +35,10 @@ class RoundRobin extends Tournament {
         this.trainer1.pokemonList[selector1].maxHp
     ) {
       if (this.trainer1.pokemonList[selector1].hp > 0) {
+        console.log(
+          `${this.trainer1.name} selects ${this.trainer1.pokemonList[selector1].name}`
+        );
+
         if (
           this.trainer1.pokemonList[selector1].hp >
           this.trainer1.pokemonList[selector1].maxHp

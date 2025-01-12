@@ -1,16 +1,18 @@
 class Pokemon {
-  constructor(name, type, level, maxHp, dmg) {
+  constructor(name, type, level, maxHp, baseDmg) {
     this.name = name;
     this.type = type;
     this.level = level;
     this.maxHp = maxHp;
     this.hp = this.maxHp;
-    this.dmg = dmg;
+    this.baseDmg = baseDmg;
+    this.dmg = 0;
     this.def = 0;
     this.defBoostIsActive = false;
   }
   attack(opponent) {
     let multiplier = Math.floor(Math.random() * this.dmg);
+    this.dmg = this.baseDmg + multiplier;
     // let damage = this.calculateDamage();
 
     if (multiplier % 2 == 0) {
@@ -33,7 +35,7 @@ class Pokemon {
   receivedDamage(opponent) {
     this.hp -= opponent.dmg - this.def;
     if (this.hp <= 0) {
-      console.log(`💀${this.name} has fainted.`);
+      console.log(`💀 ${this.name} has fainted.`);
     } else {
       console.log(`${this.name} has ${this.hp}/${this.maxHp} HP left.`);
     }

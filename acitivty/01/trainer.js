@@ -44,8 +44,11 @@ class Trainer {
   }
 
   revivePokemons() {
-    this.pokemonList.forEach(function (pokemon) {
-      //could be able to revive fainted pokemons
+    let faintedPokemons = this.pokemonList.filter(function (pokemon) {
+      return pokemon.hp <= 0;
+    });
+
+    faintedPokemons.forEach(function (pokemon) {
       pokemon.hp = pokemon.maxHp;
     });
 
