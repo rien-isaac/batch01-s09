@@ -1,4 +1,4 @@
-//spawning pokemons for trainers
+//instantiate different pokemons
 let rattata = new NormalPokemon("Rattata", 1, 20, 5);
 let sentret = new NormalPokemon("Sentret", 1, 20, 5);
 let pidgey = new NormalPokemon("Pidgey", 1, 20, 5);
@@ -25,6 +25,7 @@ let roggenrola = new RockPokemon("Roggenrola", 1, 20, 5);
 let tirtouga = new RockPokemon("Tirtouga", 1, 20, 5);
 let shuckle = new RockPokemon("Shuckle", 1, 20, 5);
 
+//add pokemons to a pool of pokemons
 let poolOfPokemons = [
   rattata,
   sentret,
@@ -53,9 +54,7 @@ let poolOfPokemons = [
   shuckle,
 ];
 
-// console.log(poolOfPokemons); // for checking pool of pokemons
-
-//adding pokemons to their respective trainers
+//instantiate trainers
 let jonas = new Trainer("Jonas");
 let jessy = new Trainer("Jessy");
 let james = new Trainer("James");
@@ -64,11 +63,10 @@ let red = new Trainer("Red");
 let blue = new Trainer("Blue");
 let wabapet = new Trainer("Wabapet");
 
-//create pool of trainers
+//add trainers to the pool of trainers
 let poolOfTrainers = [jonas, jessy, james, ash, red, blue, wabapet];
 
-// console.log(poolOfTrainers); //for checking pool of trainers
-
+//shuffle pokemon and trainers
 poolOfPokemons.sort(() => Math.random() - 0.7); //shuffle pokemons
 poolOfTrainers.sort(() => Math.random() - 0.5); //shuffle trainers
 
@@ -77,6 +75,69 @@ let contestants = []; //for bracket matching battles
 let top3Trainers = []; // for round robin matching battles
 
 let champion;
+
+//start here
+
+console.log("Hello Game Master");
+
+//start or nah
+let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
+
+if (willPlay.toLowerCase() == "n") {
+  console.log("Edi Don't");
+} else if (willPlay.toLowerCase() == "y") {
+  //Prompt how many trainer?
+  let numberOfTrainers = prompt("How many trainer? 3-5");
+  if (parseInt(numberOfTrainers) >= 3 && parseInt(numberOfTrainers) <= 5) {
+    //add trainers as contestants
+    for (let i = 0; i < parseInt(numberOfTrainers); i++) {
+      contestants.push(poolOfTrainers[i]);
+    }
+
+    //Prompt how many pokemon?
+    let numberOfPokemon = prompt(
+      "How many pokemons each trainer is required? 1-5"
+    );
+    if (parseInt(numberOfPokemon) >= 1 && parseInt(numberOfPokemon) <= 5) {
+      //add pokemon to each trainers
+      let pokemonIndex = 0;
+      for (let i = 0; i < parseInt(numberOfTrainers); i++) {
+        while (contestants[i].pokemonList.length < parseInt(numberOfPokemon)) {
+          contestants[i].addPokemon(poolOfPokemons[pokemonIndex]);
+          pokemonIndex++;
+        }
+      }
+
+      switch (parseInt(numberOfTrainers)) {
+        case 3:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching3Trainers();
+          break;
+        case 4:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching4Trainers();
+          roundRobinMatching();
+          break;
+        case 5:
+          console.log(contestants); //for viewing purposes only
+          bracketMatching5Trainers();
+          roundRobinMatching();
+          break;
+      }
+    } else {
+      invalidInput();
+    }
+  } else {
+    invalidInput();
+  }
+} else {
+  invalidInput();
+}
+
+function invalidInput() {
+  alert("Invalid Input");
+  location.reload();
+}
 
 function bracketMatching3Trainers() {
   top3Trainers.push(contestants[0], contestants[1], contestants[2]);
@@ -143,94 +204,22 @@ function roundRobinMatching() {
   console.log("Round Robin");
   console.log("+==========+");
 
-  let roundRobinGame1;
-  let roundRobinGame2;
-  let roundRobinGame3;
-
-  roundRobinGame1 = new RoundRobin(top3Trainers[0], top3Trainers[1]);
+  let roundRobinGame1 = new RoundRobin(top3Trainers[0], top3Trainers[1]);
   roundRobinGame1.battle();
 
-  roundRobinGame2 = new RoundRobin(top3Trainers[1], top3Trainers[2]);
+  let roundRobinGame2 = new RoundRobin(top3Trainers[1], top3Trainers[2]);
   roundRobinGame2.battle();
 
-  roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
+  let roundRobinGame3 = new RoundRobin(top3Trainers[2], top3Trainers[0]);
   roundRobinGame3.battle();
 
   top3Trainers.forEach(function (trainer) {
-    if (trainer.roundRobinScore == 2) {
+    if (trainer.roundRobinScore == 2 || trainer.roundRobinScore == 3) {
       champion = trainer;
     }
   });
 
-  console.log(`The CHAMPION is LVL ${champion.level} ${champion.name} 🎉🎊🎈`);
-}
-
-//start here
-
-console.log("Hello Game Master");
-
-//start or nah
-let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
-
-if (willPlay.toLowerCase() == "n") {
-  console.log("Edi Don't");
-} else if (willPlay.toLowerCase() == "y") {
-  //Prompt how many trainer?
-  let numberOfTrainers = prompt("How many trainer? ");
-  if (parseInt(numberOfTrainers) < 3 && parseInt(numberOfTrainers > 5)) {
-    alert("Invalid Input");
-    location.reload();
-  } else {
-    //add trainers as contestants
-    for (let i = 0; i < parseInt(numberOfTrainers); i++) {
-      contestants.push(poolOfTrainers[i]);
-    }
-
-    //Prompt how many pokemon?
-    let numberOfPokemon = prompt(
-      "How many pokemons each trainer is required? "
-    );
-    if (parseInt(numberOfPokemon) < 0 && parseInt(numberOfPokemon) > 5) {
-      alert("Invalid Input");
-      location.reload();
-    } else {
-      //add pokemon to each trainers
-      let pokemonIndex = 0;
-      for (let i = 0; i < parseInt(numberOfTrainers); i++) {
-        while (contestants[i].pokemonList.length < parseInt(numberOfPokemon)) {
-          contestants[i].addPokemon(poolOfPokemons[pokemonIndex]);
-          pokemonIndex++;
-        }
-      }
-
-      switch (parseInt(numberOfTrainers)) {
-        case 3:
-          console.log(contestants); //for viewing purposes only
-          bracketMatching3Trainers();
-          break;
-        case 4:
-          console.log(contestants); //for viewing purposes only
-          bracketMatching4Trainers();
-          roundRobinMatching();
-          break;
-        case 5:
-          console.log(contestants); //for viewing purposes only
-          bracketMatching5Trainers();
-          roundRobinMatching();
-          break;
-      }
-
-      //determine champion here
-      // top3Trainers.forEach(function (trainer) {
-      //   console.log(trainer);
-      //   if (trainer.roundRobinScore > 1) {
-      //     console.log(`Trainer ${trainer.name} has a score of 2`);
-      //   }
-      // });
-
-      // console.log(`+==========+`);
-      // console.log(`And our CHAMPION is ${champion.name}. CONGRATULATIONS 🎉🎊🥳🎈`);
-      // console.log(`+==========+`);
-    }
-  }
+  console.log(
+    `And our CHAMPION is LVL ${champion.level} ${champion.name} 🎉🎊🎈`
+  );
 }

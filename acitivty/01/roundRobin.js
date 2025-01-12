@@ -109,14 +109,20 @@ class RoundRobin extends Tournament {
 
               //end for healing
             }
+          } else {
+            console.log(`${this.trainer2.name} selects other pokemon.`);
+
+            selector2++;
           }
 
-          selector2++;
           break;
         }
+      } else {
+        console.log(`${this.trainer1.name} selects other pokemon.`);
+
+        selector1++;
       }
 
-      selector1++;
       break;
     }
 
@@ -139,7 +145,6 @@ class RoundRobin extends Tournament {
       this.winner = this.trainer1;
       this.trainer1.roundRobinScore++;
       this.loser = this.trainer2;
-      // console.log(this.trainer1);
       console.log(`********`);
       console.log(
         `%c${this.trainer1.name} Won and 🔼LEVEL UP.`,
@@ -153,7 +158,6 @@ class RoundRobin extends Tournament {
       this.winner = this.trainer2;
       this.trainer2.roundRobinScore++;
       this.loser = this.trainer1;
-      // console.log(this.trainer2);
 
       console.log(`********`);
       console.log(

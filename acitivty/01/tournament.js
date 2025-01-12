@@ -141,7 +141,6 @@ class Tournament {
     if (teamOneTotalHp > teamTwoTotalHp) {
       this.winner = this.trainer1;
       this.loser = this.trainer2;
-      // console.log(this.trainer1);
       console.log(`********`);
       console.log(
         `%c${this.trainer1.name} Won and 🔼LEVEL UP.`,
@@ -154,7 +153,6 @@ class Tournament {
     } else {
       this.winner = this.trainer2;
       this.loser = this.trainer1;
-      // console.log(this.trainer2);
 
       console.log(`********`);
       console.log(
