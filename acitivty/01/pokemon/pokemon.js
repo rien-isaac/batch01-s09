@@ -11,7 +11,7 @@ class Pokemon {
     this.defBoostIsActive = false;
   }
   attack(opponent) {
-    let multiplier = Math.floor(Math.random() * this.dmg);
+    let multiplier = Math.floor(Math.random() * this.baseDmg);
     this.dmg = this.calculateDamage() + multiplier;
     // let damage = this.calculateDamage();
 
@@ -38,8 +38,13 @@ class Pokemon {
       console.log(`💀 ${this.name} has fainted.`);
     } else {
       console.log(
-        `${this.name} has ${this.hp} (⬇${opponentDmg})/${this.maxHp} HP left.`
+        `${this.name} has ${this.hp} (-${opponentDmg})/${this.maxHp} HP left.`
       );
+    }
+
+    if (this.defBoostIsActive) {
+      this.defBoostIsActive = false;
+      this.def = 0;
     }
   }
 
@@ -55,10 +60,10 @@ class Pokemon {
     this.defBoostIsActive = true;
   }
 
-  powerUp() {
-    this.dmg += 2;
+  powerUp(damage) {
+    damage += 2;
     console.log(
-      `${this.name} uses 💪🔼POWER UP and increase its 💥DAMAGE ${this.dmg} (+2)`
+      `${this.name} uses 💪🔼POWER UP and increase its 💥DAMAGE ⬆⬆(+2)`
     );
   }
 

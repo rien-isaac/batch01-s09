@@ -8,6 +8,11 @@ class WaterPokemon extends Pokemon {
     let multiplier = Math.floor(Math.random() * this.baseDmg);
     this.dmg = this.calculateDamage() + multiplier;
 
+    //add power up
+    if (multiplier > 3) {
+      this.powerUp(this.dmg);
+    }
+
     if (multiplier % 2 == 0) {
       console.log(
         `${this.name} uses 💦Hydro Pump on ${opponent.name} and deals ${this.dmg} DAMAGE.`

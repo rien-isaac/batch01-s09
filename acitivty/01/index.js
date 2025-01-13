@@ -80,6 +80,8 @@ let champion;
 
 console.log("Hello Game Master");
 
+console.log(`%cPOKEMON Tournament`, `font-size: 4rem; text-align: center;`);
+
 //start or nah
 let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
 
@@ -151,9 +153,7 @@ function bracketMatching3Trainers() {
 function bracketMatching4Trainers() {
   //for 4 contestants
 
-  console.log("+==========+");
-  console.log("Bracket Matching");
-  console.log("+==========+");
+  console.log(`%cElimination Battle`, `font-size: 3rem; `);
 
   let game1 = new Tournament(contestants[0], contestants[1]);
   game1.battle();
@@ -177,9 +177,7 @@ function bracketMatching4Trainers() {
 function bracketMatching5Trainers() {
   //for 5 constestants
 
-  console.log("+==========+");
-  console.log("Bracket Matching");
-  console.log("+==========+");
+  console.log(`%cElimination Battle`, `font-size: 3rem; `);
 
   let game1 = new Tournament(contestants[0], contestants[1]);
   game1.battle();
@@ -204,9 +202,7 @@ function bracketMatching5Trainers() {
 }
 
 function roundRobinMatching() {
-  console.log("+==========+");
-  console.log("Round Robin");
-  console.log("+==========+");
+  console.log(`%cChampionship Battle`, `font-size: 3rem; `);
 
   let roundRobinGame1 = new RoundRobin(top3Trainers[0], top3Trainers[1]);
   roundRobinGame1.battle();
@@ -224,6 +220,7 @@ function roundRobinMatching() {
   });
 
   console.log(
-    `And our CHAMPION is LVL ${champion.level} ${champion.name} 🎉🎊🎈`
+    `%cAnd our CHAMPION is LVL ${champion.level} ${champion.name}🏆 🎊🎉🥳`,
+    "font-size: 4rem;"
   );
 }
