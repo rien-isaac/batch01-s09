@@ -12,28 +12,28 @@ class Pokemon {
   }
   attack(opponent) {
     let multiplier = Math.floor(Math.random() * this.dmg);
-    this.dmg = this.baseDmg + multiplier;
+    this.dmg = this.calculateDamage() + multiplier;
     // let damage = this.calculateDamage();
 
     if (multiplier % 2 == 0) {
       console.log(
         `⚔ ${this.name} attack ${opponent.name} and deals ${this.dmg} DAMAGE.`
       );
-      opponent.receivedDamage(opponent);
+      opponent.receivedDamage(this.dmg);
     } else {
       console.log(
         `💘CRITICAL HIT: ${this.name} attack ${opponent.name} and deals a ${this.dmg} DAMAGE.`
       );
-      opponent.receivedDamage(opponent);
+      opponent.receivedDamage(this.dmg);
     }
   }
 
   calculateDamage() {
-    // return Math.floor(Math.random() * this.dmg + this.dmg / 2);
+    return Math.floor(Math.random() * this.baseDmg + this.baseDmg / 2);
   }
 
-  receivedDamage(opponent) {
-    this.hp -= opponent.dmg - this.def;
+  receivedDamage(opponentDmg) {
+    this.hp -= opponentDmg - this.def;
     if (this.hp <= 0) {
       console.log(`💀 ${this.name} has fainted.`);
     } else {

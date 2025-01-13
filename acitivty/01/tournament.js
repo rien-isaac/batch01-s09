@@ -87,6 +87,27 @@ class Tournament {
 
               //did the attacked pokemon's hp satisfied the condition for healing?
               //start for healing
+              if (this.trainer1.pokemonList[selector2].hp > 0) {
+                if (
+                  this.trainer1.pokemonList[selector1].hp < 6 &&
+                  this.trainer1.pokemonList[selector1].hp > 2
+                ) {
+                  this.trainer1.pokemonList[selector1].heal();
+                }
+              } else {
+                console.log(`********`);
+                console.log(
+                  `%c${this.trainer2.name}`,
+                  `color: #ee4b2b`,
+                  `'s ${this.trainer2.pokemonList[selector2].name} has won the battle.`
+                );
+
+                this.trainer2.pokemonList[selector2].levelUp();
+
+                console.log(`********`);
+                selector2++; //select another pokemon for trainer 2
+                break;
+              }
 
               if (this.trainer2.pokemonList[selector2].hp > 0) {
                 if (
