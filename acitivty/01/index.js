@@ -108,6 +108,10 @@ if (willPlay.toLowerCase() == "n") {
         }
       }
 
+      contestants.forEach(function (trainer) {
+        console.log(`➕🧒${trainer.name} joins the tournament.`);
+      });
+
       switch (parseInt(numberOfTrainers)) {
         case 3:
           console.log(contestants); //for viewing purposes only
