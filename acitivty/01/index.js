@@ -85,9 +85,9 @@ console.log(`%cPOKEMON Tournament`, `font-size: 4rem; text-align: center;`);
 //start or nah
 let willPlay = prompt("🧓Game Master will you start the tournament? y/n");
 
-if (willPlay.toLowerCase() == "n") {
+if (willPlay && willPlay.toLowerCase() == "n") {
   console.log("Edi Don't");
-} else if (willPlay.toLowerCase() == "y") {
+} else if (willPlay && willPlay.toLowerCase() == "y") {
   //Prompt how many trainer?
   let numberOfTrainers = prompt("How many trainer? 3-5");
   if (parseInt(numberOfTrainers) >= 3 && parseInt(numberOfTrainers) <= 5) {

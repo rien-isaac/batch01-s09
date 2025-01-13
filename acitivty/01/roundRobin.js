@@ -148,7 +148,7 @@ class RoundRobin extends Tournament {
       console.log(`********`);
       console.log(
         `%c${this.trainer1.name} Won and 🔼LEVEL UP.`,
-        `color: #00ff00;`,
+        `color: #0000ff;`,
         `🎉🎊🥳`
       );
       console.log(`********`);
@@ -162,7 +162,7 @@ class RoundRobin extends Tournament {
       console.log(`********`);
       console.log(
         `%c${this.trainer2.name} Won and 🔼LEVEL UP.`,
-        `color: #0000ff;`,
+        `color: #ff0000;`,
         `🎉🎊🥳`
       );
       console.log(`********`);

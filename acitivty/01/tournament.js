@@ -9,9 +9,10 @@ class Tournament {
   battle() {
     //displays who battles
     console.log(
-      `Lvl ${this.trainer1.level}  ${this.trainer1.name}`,
-      ` VS `,
-      `Lvl ${this.trainer2.level}  ${this.trainer2.name}`
+      `%cLvl ${this.trainer1.level}  ${this.trainer1.name} %cVS %cLvl ${this.trainer2.level}  ${this.trainer2.name}`,
+      `color: #0000ff; font-size: 2rem;`,
+      `font-size: 3rem;`,
+      `color: #ff0000; font-size: 2rem;`
     );
 
     //revive pokemons if the trainer satisfied the level condition
@@ -165,7 +166,7 @@ class Tournament {
       console.log(`********`);
       console.log(
         `%c${this.trainer1.name} Won and 🔼LEVEL UP.`,
-        `color: #00ff00;`,
+        `color: ##0000ff;`,
         `🎉🎊🥳`
       );
       console.log(`********`);
@@ -178,7 +179,7 @@ class Tournament {
       console.log(`********`);
       console.log(
         `%c${this.trainer2.name} Won and 🔼LEVEL UP.`,
-        `color: #0000ff;`,
+        `color: #ff0000;`,
         `🎉🎊🥳`
       );
       console.log(`********`);
