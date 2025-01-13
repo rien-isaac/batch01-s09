@@ -171,7 +171,7 @@ function bracketMatching4Trainers() {
   game5.battle();
 
   //setting top 3 trainers
-  top3Trainers.push(game4.winner, game5.winner, game5.loser);
+  top3Trainers.push(game3.winner, game5.winner, game5.loser);
 }
 
 function bracketMatching5Trainers() {
