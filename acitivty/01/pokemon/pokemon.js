@@ -37,7 +37,9 @@ class Pokemon {
     if (this.hp <= 0) {
       console.log(`💀 ${this.name} has fainted.`);
     } else {
-      console.log(`${this.name} has ${this.hp}/${this.maxHp} HP left.`);
+      console.log(
+        `${this.name} has ${this.hp} (⬇${opponentDmg})/${this.maxHp} HP left.`
+      );
     }
   }
 

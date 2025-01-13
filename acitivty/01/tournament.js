@@ -105,7 +105,7 @@ class Tournament {
                 this.trainer2.pokemonList[selector2].levelUp();
 
                 console.log(`********`);
-                selector2++; //select another pokemon for trainer 2
+                selector1++; //select another pokemon for trainer 2
                 break;
               }
 
