@@ -224,7 +224,7 @@ function roundRobinMatching() {
   console.log(
     `
     %c👦 ${champion.name}
-    ᴸⱽᴸ ${champion.level}
+    LVL ${champion.level}
     `,
     `font-size: 4rem; font-weight: 900;`
   );
@@ -233,7 +233,7 @@ function roundRobinMatching() {
   champion.pokemonList.forEach(function (pokemon) {
     console.log(`
       👽${pokemon.name}
-      ᴸⱽᴸ ${pokemon.level}
+      LVL ${pokemon.level}
       🧡 ${pokemon.hp}/${pokemon.maxHp}
       💪 ${pokemon.baseDmg}
       `);
