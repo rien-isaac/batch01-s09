@@ -219,8 +219,23 @@ function roundRobinMatching() {
     }
   });
 
+  console.log(`%cAnd our CHAMPION is`, "font-size: 4rem;");
+
   console.log(
-    `%cAnd our CHAMPION is LVL ${champion.level} ${champion.name}🏆 🎊🎉🥳`,
-    "font-size: 4rem;"
+    `
+    %c👦 ${champion.name}
+    Lvl ${champion.level}
+    `,
+    `font-size: 4rem; font-weight: 900;`
   );
+
+  console.log(`Pokemons of ${champion.name}`);
+  champion.pokemonList.forEach(function (pokemon) {
+    console.log(`
+      👽${pokemon.name}
+      Lvl ${pokemon.level}
+      🧡 ${pokemon.hp}/${pokemon.maxHp}
+      💪 ${pokemon.baseDmg}
+      `);
+  });
 }
